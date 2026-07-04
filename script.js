@@ -10,7 +10,6 @@ const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 const clearCart = document.getElementById("clearCart");
 const productGrid = document.getElementById("productGrid");
-const productGrid = document.getElementById("productGrid");
 const searchBox = document.getElementById("searchBox");
 
 function displayProducts(list = products) {
