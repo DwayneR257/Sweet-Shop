@@ -9,35 +9,36 @@ const closeCart = document.getElementById("closeCart");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 const clearCart = document.getElementById("clearCart");
-
 const productGrid = document.getElementById("productGrid");
-
 const productGrid = document.getElementById("productGrid");
+const searchBox = document.getElementById("searchBox");
 
-function displayProducts() {
+function displayProducts(list = products) {
 
     productGrid.innerHTML = "";
 
-    products.forEach(product => {
+    list.forEach(product => {
 
         productGrid.innerHTML += `
-            <div class="product-card">
 
-                <img src="${product.image}" alt="${product.name}">
+        <div class="product-card">
 
-                <h3>${product.name}</h3>
+            <img src="${product.image}" alt="${product.name}">
 
-                <p>${product.description}</p>
+            <h3>${product.name}</h3>
 
-                <span>R${product.price}</span>
+            <p>${product.description}</p>
 
-                <button
-                    class="add-to-cart"
-                    data-id="${product.id}">
-                    Add to Cart
-                </button>
+            <span>R${product.price}</span>
 
-            </div>
+            <button
+                class="add-to-cart"
+                data-id="${product.id}">
+                Add to Cart
+            </button>
+
+        </div>
+
         `;
 
     });
@@ -45,6 +46,21 @@ function displayProducts() {
     setupCartButtons();
 
 }
+
+searchBox.addEventListener("input", () => {
+
+    const search = searchBox.value.toLowerCase();
+
+    const filtered = products.filter(product => {
+
+        return product.name.toLowerCase().includes(search) ||
+               product.description.toLowerCase().includes(search);
+
+    });
+
+    displayProducts(filtered);
+
+});
 
 function setupCartButtons() {
 
