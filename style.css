@@ -1,0 +1,628 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+    }
+
+        body{
+            background-color:#fff5f7;
+            color:#333;
+        }
+
+       /* ================= HEADER ================= */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    background:#ff4d88;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 60px;
+
+    box-shadow:0 2px 15px rgba(0,0,0,.15);
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    margin-left:30px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#ffe600;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+    height:600px;
+
+    background-image:
+
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+
+    url("Images/IMG-20260602-WA0048.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.hero-content{
+
+    width:70%;
+
+}
+
+.hero h1{
+
+    font-size:65px;
+
+    margin-bottom:25px;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+}
+
+.btn{
+
+    display:inline-block;
+
+    background:#ff4d88;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 38px;
+
+    border-radius:40px;
+
+    margin-right:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#ff1a66;
+
+    transform:translateY(-5px);
+
+}
+
+.btn-secondary{
+
+    display:inline-block;
+
+    background:white;
+
+    color:#ff4d88;
+
+    text-decoration:none;
+
+    padding:16px 38px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-secondary:hover{
+
+    background:#ffe6ee;
+
+}
+
+/* ================= WHY CHOOSE US ================= */
+
+.why-us{
+
+    padding:80px 20px;
+
+    text-align:center;
+
+    background:#fff5f7;
+
+}
+
+.why-us h2{
+
+    font-size:40px;
+
+    margin-bottom:50px;
+
+    color:#333;
+
+}
+
+.why-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.why-box{
+
+    background:white;
+
+    width:250px;
+
+    padding:30px 20px;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+    transition:.3s;
+
+}
+
+.why-box:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+
+}
+
+.why-box h3{
+
+    font-size:20px;
+
+    margin-bottom:15px;
+
+}
+
+.why-box p{
+
+    font-size:16px;
+
+    color:#555;
+
+}
+
+/* ================= FEATURED PRODUCTS ================= */
+
+.featured{
+
+    padding:80px 20px;
+
+    text-align:center;
+
+    background:white;
+
+}
+
+.featured h2{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+.featured-subtitle{
+
+    color:#777;
+
+    margin-bottom:50px;
+
+}
+
+.featured-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.featured-card{
+
+    width:280px;
+
+    background:#fff5f7;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+    transition:.3s;
+
+}
+
+.featured-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.featured-card img{
+
+    width:100%;
+
+    height:200px;
+
+    object-fit:cover;
+
+}
+
+.featured-card h3{
+
+    margin:15px 0 5px;
+
+}
+
+.featured-card p{
+
+    color:#555;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+}
+
+.featured-card span{
+
+    display:block;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#ff1a66;
+
+    margin-bottom:10px;
+
+}
+
+.featured-card button{
+
+    background:#ff4d88;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    width:100%;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.featured-card button:hover{
+
+    background:#ff1a66;
+
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Tablets */
+@media (max-width: 992px){
+
+    header{
+        padding:15px 25px;
+    }
+
+    nav a{
+        margin-left:15px;
+        font-size:16px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+}
+
+/* Phones */
+@media (max-width: 600px){
+
+    header{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+    }
+
+    nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+    }
+
+    nav a{
+        margin:5px;
+        font-size:14px;
+    }
+
+    .hero{
+        height:450px;
+        padding:20px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .btn, .btn-secondary{
+        display:block;
+        margin:10px auto;
+        width:80%;
+    }
+
+    .why-container,
+    .featured-container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .featured-card,
+    .why-box{
+        width:90%;
+    }
+
+}
+
+/* ================= PRODUCTS GRID ================= */
+
+.products{
+    padding:80px 20px;
+    text-align:center;
+    background:#fff5f7;
+}
+
+.products h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.products p{
+    color:#777;
+    margin-bottom:40px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.product-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+}
+
+.product-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.product-card h3{
+    margin:15px 0 5px;
+}
+
+.product-card p{
+    color:#555;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.product-card span{
+    font-size:20px;
+    font-weight:bold;
+    color:#ff1a66;
+    margin-bottom:10px;
+}
+
+.product-card button{
+    background:#ff4d88;
+    color:white;
+    border:none;
+    padding:12px;
+    width:100%;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:auto;
+    transition:.3s;
+}
+
+.product-card button:hover{
+    background:#ff1a66;
+}
+
+/* ================= CART PANEL ================= */
+
+.cart-panel{
+    position:fixed;
+    right:-400px;
+    top:0;
+    width:350px;
+    height:100%;
+    background:white;
+    box-shadow:-5px 0 20px rgba(0,0,0,.2);
+    padding:20px;
+    transition:.3s;
+    z-index:2000;
+    overflow-y:auto;
+}
+
+.cart-panel.active{
+    right:0;
+}
+
+#cartItems{
+    margin-top:20px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    border-bottom:1px solid #eee;
+    padding-bottom:10px;
+}
+
+.cart-panel button{
+    background:#ff4d88;
+    color:white;
+    border:none;
+    padding:10px;
+    width:100%;
+    margin-top:20px;
+    cursor:pointer;
+}
+        .hero img{
+            width:80%;
+            max-width:900px;
+            border-radius:10px;
+        }
+
+        .products{
+            padding:40px;
+            text-align:center;
+        }
+
+        .product-container{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+            margin-top:30px;
+        }
+
+        .product{
+            background:white;
+            width:250px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+            padding:15px;
+        }
+
+        .product img{
+            width:100%;
+            height:200px;
+            object-fit:cover;
+            border-radius:10px;
+        }
+
+        .product h3{
+            margin:15px 0 10px;
+        }
+
+        .price{
+            color:#ff1a66;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .contact{
+            background-color:#ffe6ee;
+            padding:40px;
+            text-align:center;
+        }
+
+        footer{
+            background-color:#ff4d88;
+            color:white;
+            text-align:center;
+            padding:15px;
+        }
