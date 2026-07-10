@@ -1,7 +1,5 @@
-
-// ================= CART SYSTEM =================
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let selectedCategory = "All";
 
 const cartBtn = document.getElementById("cartBtn");
 const cartPanel = document.getElementById("cartPanel");
@@ -9,21 +7,22 @@ const closeCart = document.getElementById("closeCart");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 const clearCart = document.getElementById("clearCart");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
 const productGrid = document.getElementById("productGrid");
 const searchBox = document.getElementById("searchBox");
 const categoryButtons = document.querySelectorAll(".category-btn");
-const checkoutBtn = document.getElementById("checkoutBtn");
 
-let selectedCategory = "All";
 
-function displayProducts(list = products) {
+// LOAD PRODUCTS
+
+function displayProducts(productList){
 
     productGrid.innerHTML = "";
 
-    list.forEach(product => {
+    productList.forEach(product => {
 
         productGrid.innerHTML += `
-
         <div class="product-card">
 
             <img src="${product.image}" alt="${product.name}">
@@ -34,144 +33,106 @@ function displayProducts(list = products) {
 
             <span>R${product.price}</span>
 
-            <button
-                class="add-to-cart"
-                data-id="${product.id}">
+            <button class="add-to-cart" data-id="${product.id}">
                 Add to Cart
             </button>
 
         </div>
-
         `;
 
     });
 
-    setupCartButtons();
+    addCartButtons();
 
 }
 
-searchBox.addEventListener("input", () => {
 
-    const search = searchBox.value.toLowerCase();
 
-    const filtered = products.filter(product => {
+// ADD TO CART BUTTONS
 
-        return product.name.toLowerCase().includes(search) ||
-               product.description.toLowerCase().includes(search);
-
-    });
-
-    displayProducts(filtered);
-
-});
-
-function setupCartButtons() {
+function addCartButtons(){
 
     const buttons = document.querySelectorAll(".add-to-cart");
 
     buttons.forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.onclick = function(){
 
-            const id = Number(button.dataset.id);
+            let id = Number(this.dataset.id);
 
             addToCart(id);
 
-        });
+        };
 
     });
 
 }
 
-function addToCart(id) {
 
-    const product = products.find(p => p.id === id);
 
-    if (!product) return;
+// ADD PRODUCT
 
-    cart.push(product);
+function addToCart(id){
 
-    updateCart();
+    let product = products.find(
+        product => product.id === id
+    );
+
+
+    if(product){
+
+        cart.push(product);
+
+        updateCart();
+
+    }
 
 }
 
-// Open cart
-cartBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    cartPanel.classList.add("active");
-});
 
-// Close cart
-closeCart.addEventListener("click", () => {
-    cartPanel.classList.remove("active");
-});
 
-// Add to cart buttons
-document.querySelectorAll(".add-to-cart").forEach(button => {
+// UPDATE CART
 
-    button.addEventListener("click", () => {
-
-        const name = button.getAttribute("data-name");
-        const price = Number(button.getAttribute("data-price"));
-
-        cart.push({ name, price });
-
-        updateCart();
-
-        button.innerText = "Added ✔";
-        button.style.background = "#28a745";
-
-        setTimeout(() => {
-            button.innerText = "Add to Cart";
-            button.style.background = "#ff4d88";
-        }, 1000);
-
-    });
-
-    clearCart.addEventListener("click", () => {
-
-        cart = [];
-
-        updateCart();
-
-    });
-
-});
-
-// Update cart UI
-function updateCart() {
+function updateCart(){
 
     cartItems.innerHTML = "";
 
     let total = 0;
 
-    const grouped = {};
+
+    let grouped = {};
+
 
     cart.forEach(item => {
 
-        total += item.price;
 
-        if (grouped[item.id]) {
+        if(grouped[item.id]){
 
             grouped[item.id].quantity++;
 
-        } else {
+        }
+        else{
 
             grouped[item.id] = {
-
                 ...item,
-
-                quantity: 1
-
+                quantity:1
             };
 
         }
 
+
     });
 
-    Object.values(grouped).forEach(item => {
 
-    cartItems.innerHTML += `
+
+    Object.values(grouped).forEach(item=>{
+
+
+        total += item.price * item.quantity;
+
+
+
+        cartItems.innerHTML += `
 
         <div class="cart-item">
 
@@ -179,210 +140,332 @@ function updateCart() {
 
                 <strong>${item.name}</strong>
 
+
                 <div class="quantity-controls">
 
-                    <button
-                        class="decrease-btn"
-                        data-id="${item.id}">
-                        -
+                    <button class="minus"
+                    data-id="${item.id}">
+                    -
                     </button>
 
-                    <span>${item.quantity}</span>
 
-                    <button
-                        class="increase-btn"
-                        data-id="${item.id}">
-                        +
+                    ${item.quantity}
+
+
+                    <button class="plus"
+                    data-id="${item.id}">
+                    +
                     </button>
 
                 </div>
 
-                <button
-                    class="remove-btn"
-                    data-id="${item.id}">
-                    🗑️ Remove
+
+                <button class="remove-btn"
+                data-id="${item.id}">
+                Remove
                 </button>
 
             </div>
 
+
             <div>
-
-                R${item.price * item.quantity}
-
+            R${item.price * item.quantity}
             </div>
+
 
         </div>
 
-    `;
+        `;
+
 
     });
 
-    function setupCartControls() {
 
-    document
-        .querySelectorAll(".increase-btn")
-        .forEach(button => {
+    cartTotal.innerText =
+    "Total: R" + total;
 
-            button.addEventListener("click", () => {
 
-                const id =
-                    Number(button.dataset.id);
+    cartBtn.innerText =
+    "🛒 Cart (" + cart.length + ")";
 
-                addToCart(id);
 
-            });
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
 
-        });
 
-    document
-        .querySelectorAll(".decrease-btn")
-        .forEach(button => {
+    cartControls();
 
-            button.addEventListener("click", () => {
+}
 
-                const id =
-                    Number(button.dataset.id);
 
-                removeOne(id);
 
-            });
+// CART BUTTON CONTROLS
 
-        });
+function cartControls(){
 
-    document
-        .querySelectorAll(".remove-btn")
-        .forEach(button => {
 
-            button.addEventListener("click", () => {
+document.querySelectorAll(".plus")
+.forEach(button=>{
 
-                const id =
-                    Number(button.dataset.id);
+    button.onclick=function(){
 
-                removeAll(id);
+        addToCart(Number(this.dataset.id));
 
-            });
+    };
 
-        });
+});
 
-    }
 
-    function removeOne(id) {
 
-    const index =
-        cart.findIndex(item =>
-            item.id === id
-        );
+document.querySelectorAll(".minus")
+.forEach(button=>{
 
-    if (index !== -1) {
 
-        cart.splice(index, 1);
+    button.onclick=function(){
+
+        removeOne(Number(this.dataset.id));
+
+    };
+
+
+});
+
+
+
+document.querySelectorAll(".remove-btn")
+.forEach(button=>{
+
+
+    button.onclick=function(){
+
+        removeAll(Number(this.dataset.id));
+
+    };
+
+
+});
+
+
+}
+
+
+
+// REMOVE ONE
+
+function removeOne(id){
+
+    let index = cart.findIndex(
+        item=>item.id===id
+    );
+
+
+    if(index !== -1){
+
+        cart.splice(index,1);
 
         updateCart();
 
     }
 
-    }
+}
 
-    function removeAll(id) {
 
-    cart =
-        cart.filter(item =>
-            item.id !== id
-        );
+
+// REMOVE ALL
+
+function removeAll(id){
+
+    cart = cart.filter(
+        item=>item.id !== id
+    );
+
 
     updateCart();
 
-    }
+}
 
-    categoryButtons.forEach(button => {
 
-    button.addEventListener("click", () => {
 
-        categoryButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
+// SEARCH
 
-        button.classList.add("active");
+searchBox.addEventListener("input",()=>{
 
-        selectedCategory =
-            button.dataset.category;
+    filterProducts();
 
-        filterProducts();
+});
 
+
+
+
+// CATEGORY BUTTONS
+
+categoryButtons.forEach(button=>{
+
+
+button.onclick=function(){
+
+
+    categoryButtons.forEach(btn=>{
+        btn.classList.remove("active");
     });
 
-    });
 
-    searchBox.addEventListener("input", () => {
+    this.classList.add("active");
 
-        filterProducts();
 
-    });
+    selectedCategory =
+    this.dataset.category;
 
-    checkoutBtn.addEventListener("click", () => {
 
-    if (cart.length === 0) {
+    filterProducts();
 
-        alert("Your cart is empty.");
 
-        return;
-    }
+};
 
-    let message =
-        "Hello F&D Sweets!%0A%0AI'd like to order:%0A%0A";
 
-    const grouped = {};
+});
 
-    cart.forEach(item => {
 
-        if (grouped[item.id]) {
 
-            grouped[item.id].quantity++;
 
-        } else {
+// FILTER
 
-            grouped[item.id] = {
+function filterProducts(){
 
-                ...item,
-                quantity: 1
 
-            };
+let filtered = products;
 
-        }
 
-    });
 
-    let total = 0;
+if(selectedCategory !== "All"){
 
-    Object.values(grouped).forEach(item => {
 
-        message +=
-            `• ${item.name} x${item.quantity}%0A`;
-
-        total +=
-            item.price * item.quantity;
-
-    });
-
-    message +=
-        `%0AOrder Total: R${total}`;
-
-    const phone =
-        "27721393364";
-
-    window.open(
-        `https://wa.me/${phone}?text=${message}`,
-        "_blank"
+    filtered =
+    filtered.filter(product =>
+        product.category === selectedCategory
     );
 
-    });
-
-    cartTotal.innerText = `Total: R${total}`;
-
-    cartBtn.innerText = `🛒 Cart (${cart.length})`;
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    setupCartControls();
 
 }
+
+
+
+let search =
+searchBox.value.toLowerCase();
+
+
+
+if(search){
+
+
+    filtered =
+    filtered.filter(product =>
+
+    product.name.toLowerCase()
+    .includes(search)
+
+    );
+
+}
+
+
+
+displayProducts(filtered);
+
+
+}
+
+
+
+// OPEN CART
+
+cartBtn.onclick=function(e){
+
+    e.preventDefault();
+
+    cartPanel.classList.add("active");
+
+};
+
+
+
+// CLOSE CART
+
+closeCart.onclick=function(){
+
+    cartPanel.classList.remove("active");
+
+};
+
+
+
+// CLEAR CART
+
+clearCart.onclick=function(){
+
+    cart=[];
+
+    updateCart();
+
+};
+
+
+
+// WHATSAPP CHECKOUT
+
+checkoutBtn.onclick=function(){
+
+
+if(cart.length===0){
+
+    alert("Your cart is empty");
+
+    return;
+
+}
+
+
+
+let message =
+"Hello F&D Sweets, I would like to order:%0A%0A";
+
+
+let total = 0;
+
+
+
+cart.forEach(item=>{
+
+message +=
+"- " + item.name + "%0A";
+
+total += item.price;
+
+});
+
+
+
+message +=
+"%0ATotal: R" + total;
+
+
+
+let phone =
+"27711393364";
+
+
+
+window.open(
+"https://wa.me/"+phone+"?text="+message,
+"_blank"
+);
+
+};
+
+// START WEBSITE
+
+displayProducts(products);
+
+updateCart();

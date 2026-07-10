@@ -1,224 +1,386 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>F&D Sweet Shop</title>
 
     <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
+<body id="top">
+<!-- ================= HEADER ================= -->
 
-    <!-- ================= HEADER ================= -->
+<header>
 
-    <header>
+    <div class="logo">
+        🍬 F&D Sweets
+    </div>
 
-        <div class="logo">
-            🍬 F&D Sweets
-        </div>
+    <nav>
 
-        <nav>
+        <a href="#top">Home</a>
 
-            <a href="#">Home</a>
+        <a href="#products">Products</a>
 
-            <a href="#products">Products</a>
+        <a href="#about">About Us</a>
 
-            <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
 
-            <a href="#contact">Contact</a>
+        <a href="#" id="cartBtn">
+            🛒 Cart (0)
+        </a>
 
-            <a href="#" id="cartBtn">🛒 Cart (0)</a>
+    </nav>
 
-        </nav>
+</header>
 
-    </header>
+<!-- ================= HERO SECTION ================= -->
 
-    <!-- ================= HERO SECTION ================= -->
+<section class="hero">
 
-    <section class="hero">
+    <div class="hero-content">
 
-        <div class="hero-content">
+        <h1>
+            Making Life Sweeter Every Day
+        </h1>
 
-            <h1>Making Life Sweeter Every Day</h1>
-
-            <p>
-
+        <p>
             Welcome to F&D Sweet Shop!
+            We offer delicious sweets,
+            chocolates, marshmallows and treats
+            at affordable prices.
+        </p>
 
-            We offer delicious sweets, chocolates,
-            marshmallows and treats at affordable prices.
+        <a href="#products" class="btn">
+            Shop Now
+        </a>
 
-            </p>
-
-            <a href="#products" class="btn">Shop Now</a>
-
-            <a href="#contact" class="btn-secondary">Contact Us</a>
-
-        </div>
-
-    </section>
-
-    <!-- ================= WHY CHOOSE US ================= -->
-
-    <section class="why-us" id="about">
-
-        <h2>Why Choose F&D Sweets?</h2>
-
-        <div class="why-container">
-
-            <div class="why-box">
-                <h3>🚚 Fast Service</h3>
-                <p>Quick and reliable delivery for all orders.</p>
-            </div>
-
-            <div class="why-box">
-                <h3>🍬 Premium Quality</h3>
-                <p>Only the freshest and highest quality sweets.</p>
-            </div>
-
-            <div class="why-box">
-                <h3>💰 Affordable Prices</h3>
-                <p>Great sweets that fit every budget.</p>
-            </div>
-
-            <div class="why-box">
-                <h3>😊 Friendly Service</h3>
-                <p>We care about every customer experience.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ================= FEATURED PRODUCTS ================= -->
-
-    <section class="featured" id="products">
-
-        <h2>Featured Products</h2>
-        <p class="featured-subtitle">Our most popular sweets loved by customers</p>
-
-        <div class="featured-container">
-
-            <div class="featured-card">
-                <img src="Images/IMG-20260602-WA0046.jpg" alt="Cupcakes">
-                <h3>Chocolate Cupcakes</h3>
-                <p>Soft and rich chocolate cupcakes</p>
-                <span>R35</span>
-
-                <button class="add-to-cart" data-name="Chocolate Cupcakes" data-price="35">
-                        Add to Cart
-                </button>
-            </div>
-
-            <div class="featured-card">
-                <img src="Images/IMG-20260602-WA0038.jpg" alt="Candy">
-                <h3>Rainbow Candy Mix</h3>
-                <p>Colourful sweet candy selection</p>
-                <span>R50</span>
-
-                <button class="add-to-cart" data-name="Chocolate Cupcakes" data-price="35">
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="featured-card">
-                <img src="Images/Marshmallows.png" alt="Marshmallows">
-                <h3>Marshmallows</h3>
-                <p>Soft fluffy marshmallows</p>
-                <span>R25</span>
-
-                <button class="add-to-cart" data-name="Chocolate Cupcakes" data-price="35">
-                    Add to Cart
-                </button>
-            </div>
-
-        </div>
-
-    </section>
-
-    
-    <!-- ================= PRODUCTS ================= -->
-
-    <section class="products" id="products">
-
-        <h2>Our Sweet Collection</h2>
-
-        <div class="category-container">
-
-            <button class="category-btn active" data-category="All">
-                All
-            </button>
-
-            <button class="category-btn" data-category="Chocolate">
-                Chocolate
-            </button>
-
-            <button class="category-btn" data-category="Toffees">
-                Toffees
-            </button>
-
-            <button class="category-btn" data-category="Marshmallows">
-                Marshmallows
-            </button>
-
-            <button class="category-btn" data-category="Apricots">
-                Apricots
-            </button>
-
-        </div>
-
-        <div class="search-container">
-
-            <input
-                type="text"
-                id="searchBox"
-                placeholder="🔍 Search sweets...">
-
-        </div>
-        
-        <p>Tap a product to add it to your cart</p>
-
-        <div class="product-grid" id="productGrid">
-
-           
-        </div>
-    </section>
-
-    <!-- ================= CART PANEL ================= -->
-
-    <div class="cart-panel" id="cartPanel">
-
-        <h2>Your Cart</h2>
-
-        <div id="cartItems"></div>
-
-        <button id="checkoutBtn">
-            Checkout via WhatsApp
-        </button>
-
-        <h3 id="cartTotal">Total: R0</h3>
-
-        <button id="clearCart">Clear Cart</button>
-
-        <button id="closeCart">Close</button>
+        <a href="#contact" class="btn-secondary">
+            Contact Us
+        </a>
 
     </div>
 
-    <section class="contact" id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Whatsapp Fanie:</strong> 071 139 3364</p>
-        <p><strong>Address:</strong> Kirkwood, Eastern Cape, South Africa</p>
-    </section>
+</section>
 
-    <footer>
-        <p>&copy; 2026 F&D Sweet Shop | All Rights Reserved</p>
-    </footer>
+<!-- ================= WHY CHOOSE US ================= -->
 
-    <script src="products.js"></script>
-    <script src="script.js"></script>
-    
+<section class="why-us" id="about">
+
+<h2>
+    Why Choose F&D Sweets?
+</h2>
+
+<div class="why-container">
+
+    <div class="why-box">
+
+        <h3>🚚 Fast Service</h3>
+
+        <p>
+            Quick and reliable delivery for all orders.
+        </p>
+
+    </div>
+
+    <div class="why-box">
+
+        <h3>🍬 Premium Quality</h3>
+
+        <p>
+            Only the freshest and highest quality sweets.
+        </p>
+
+    </div>
+
+    <div class="why-box">
+
+        <h3>💰 Affordable Prices</h3>
+
+        <p>
+            Great sweets that fit every budget.
+        </p>
+
+    </div>
+
+    <div class="why-box">
+
+        <h3>😊 Friendly Service</h3>
+
+        <p>
+            We care about every customer experience.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+
+<section class="featured" id="featured">
+
+<h2>
+    Featured Products
+</h2>
+
+<p class="featured-subtitle">
+    Our most popular sweets loved by customers
+</p>
+
+<div class="featured-container">
+
+<div class="featured-card">
+
+<img src="Images/IMG-20260602-WA0046.jpg"
+     alt="Chocolate Cupcakes">
+
+<h3>
+    Chocolate Cupcakes
+</h3>
+
+<p>
+    Soft and rich chocolate cupcakes
+</p>
+
+<span>
+    R35
+</span>
+
+<button class="add-to-cart"
+        data-name="Chocolate Cupcakes"
+        data-price="35">
+
+    Add to Cart
+
+</button>
+
+</div>
+
+<div class="featured-card">
+
+<img src="Images/IMG-20260602-WA0038.jpg"
+     alt="Rainbow Candy Mix">
+
+<h3>
+    Rainbow Candy Mix
+</h3>
+
+<p>
+    Colourful sweet candy selection
+</p>
+
+<span>
+    R50
+</span>
+
+<button class="add-to-cart"
+        data-name="Rainbow Candy Mix"
+        data-price="50">
+
+    Add to Cart
+
+</button>
+
+</div>
+
+<div class="featured-card">
+
+<img src="Images/Marshmallows.png"
+     alt="Marshmallows">
+
+<h3>
+    Marshmallows
+</h3>
+
+<p>
+    Soft fluffy marshmallows
+</p>
+
+<span>
+    R25
+</span>
+
+<button class="add-to-cart"
+        data-name="Marshmallows"
+        data-price="25">
+
+    Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products" id="products">
+
+<h2>
+    Our Sweet Collection
+</h2>
+
+<div class="category-container">
+
+<button class="category-btn active"
+        data-category="All">
+
+    All
+
+</button>
+
+<button class="category-btn"
+        data-category="Chocolate">
+
+    Chocolate
+
+</button>
+
+<button class="category-btn"
+        data-category="Candy">
+
+    Candy
+
+</button>
+
+<button class="category-btn"
+        data-category="Marshmallows">
+
+    Marshmallows
+
+</button>
+
+<button class="category-btn"
+        data-category="Dried Fruit">
+
+    Dried Fruit
+
+</button>
+
+</div>
+
+<div class="search-container">
+
+<input type="text"
+       id="searchBox"
+       placeholder="🔍 Search sweets...">
+
+</div>
+
+<p>
+    Tap a product to add it to your cart
+</p>
+
+<div class="product-grid"
+     id="productGrid">
+
+</div>
+
+</section>
+
+<!-- ================= CART PANEL ================= -->
+
+<div class="cart-panel"
+     id="cartPanel">
+
+<h2>
+    Your Cart
+</h2>
+
+<div id="cartItems"></div>
+
+<button id="checkoutBtn">
+
+    Checkout via WhatsApp
+
+</button>
+
+<h3 id="cartTotal">
+
+    Total: R0
+
+</h3>
+
+<button id="clearCart">
+
+    Clear Cart
+
+</button>
+
+<button id="closeCart">
+
+    Close
+
+</button>
+
+</div>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact"
+         id="contact">
+
+
+<h2>
+    Contact Us
+</h2>
+
+<p>
+
+<strong>
+    Whatsapp Fanie:
+</strong>
+
+
+<a href="https://wa.me/27721393364">
+
+072 139 3364
+
+</a>
+
+</p>
+
+<p>
+
+<strong>
+    Address:
+</strong>
+
+Kirkwood,
+Eastern Cape,
+South Africa
+
+</p>
+
+</section>
+
+<footer>
+
+<p>
+&copy; 2026 F&D Sweet Shop
+</p>
+
+<p>
+Made with ❤️ in Kirkwood
+</p>
+
+</footer>
+
+<script src="products.js"></script>
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
+
