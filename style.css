@@ -617,6 +617,34 @@ nav a:hover{
 .category-btn.active{
     background:#ff1a66;
 }
+
+.quantity-controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.quantity-controls button{
+    width:30px;
+    height:30px;
+    border:none;
+    background:#ff80aa;
+    color:white;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.remove-btn{
+    margin-top:10px;
+    border:none;
+    background:#ff4d88;
+    color:white;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
         .hero img{
             width:80%;
             max-width:900px;

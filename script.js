@@ -171,29 +171,128 @@ function updateCart() {
 
     Object.values(grouped).forEach(item => {
 
-        cartItems.innerHTML += `
+    cartItems.innerHTML += `
 
-            <div class="cart-item">
+        <div class="cart-item">
 
-                <div>
+            <div>
 
-                    <strong>${item.name}</strong><br>
+                <strong>${item.name}</strong>
 
-                    Qty: ${item.quantity}
+                <div class="quantity-controls">
+
+                    <button
+                        class="decrease-btn"
+                        data-id="${item.id}">
+                        -
+                    </button>
+
+                    <span>${item.quantity}</span>
+
+                    <button
+                        class="increase-btn"
+                        data-id="${item.id}">
+                        +
+                    </button>
 
                 </div>
 
-                <div>
-
-                    R${item.price * item.quantity}
-
-                </div>
+                <button
+                    class="remove-btn"
+                    data-id="${item.id}">
+                    🗑️ Remove
+                </button>
 
             </div>
 
-        `;
+            <div>
+
+                R${item.price * item.quantity}
+
+            </div>
+
+        </div>
+
+    `;
 
     });
+
+    function setupCartControls() {
+
+    document
+        .querySelectorAll(".increase-btn")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const id =
+                    Number(button.dataset.id);
+
+                addToCart(id);
+
+            });
+
+        });
+
+    document
+        .querySelectorAll(".decrease-btn")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const id =
+                    Number(button.dataset.id);
+
+                removeOne(id);
+
+            });
+
+        });
+
+    document
+        .querySelectorAll(".remove-btn")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const id =
+                    Number(button.dataset.id);
+
+                removeAll(id);
+
+            });
+
+        });
+
+    }
+
+    function removeOne(id) {
+
+    const index =
+        cart.findIndex(item =>
+            item.id === id
+        );
+
+    if (index !== -1) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    }
+
+    }
+
+    function removeAll(id) {
+
+    cart =
+        cart.filter(item =>
+            item.id !== id
+        );
+
+    updateCart();
+
+    }
 
     categoryButtons.forEach(button => {
 
@@ -207,7 +306,7 @@ function updateCart() {
 
         selectedCategory =
             button.dataset.category;
-            
+
         filterProducts();
 
     });
@@ -225,5 +324,7 @@ function updateCart() {
     cartBtn.innerText = `🛒 Cart (${cart.length})`;
 
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    setupCartControls();
 
 }
