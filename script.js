@@ -11,6 +11,10 @@ const cartTotal = document.getElementById("cartTotal");
 const clearCart = document.getElementById("clearCart");
 const productGrid = document.getElementById("productGrid");
 const searchBox = document.getElementById("searchBox");
+const categoryButtons =
+    document.querySelectorAll(".category-btn");
+
+let selectedCategory = "All";
 
 function displayProducts(list = products) {
 
@@ -188,6 +192,31 @@ function updateCart() {
             </div>
 
         `;
+
+    });
+
+    categoryButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        categoryButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        selectedCategory =
+            button.dataset.category;
+            
+        filterProducts();
+
+    });
+
+    });
+
+    searchBox.addEventListener("input", () => {
+
+        filterProducts();
 
     });
 

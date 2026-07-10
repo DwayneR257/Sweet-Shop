@@ -591,6 +591,32 @@ nav a:hover{
 #searchBox:focus{
     box-shadow:0 0 15px rgba(255,77,136,.3);
 }
+
+.category-container{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.category-btn{
+    padding:10px 20px;
+    border:none;
+    background:#ff80aa;
+    color:white;
+    border-radius:25px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category-btn:hover{
+    background:#ff4d88;
+}
+
+.category-btn.active{
+    background:#ff1a66;
+}
         .hero img{
             width:80%;
             max-width:900px;
