@@ -11,8 +11,8 @@ const cartTotal = document.getElementById("cartTotal");
 const clearCart = document.getElementById("clearCart");
 const productGrid = document.getElementById("productGrid");
 const searchBox = document.getElementById("searchBox");
-const categoryButtons =
-    document.querySelectorAll(".category-btn");
+const categoryButtons = document.querySelectorAll(".category-btn");
+const checkoutBtn = document.getElementById("checkoutBtn");
 
 let selectedCategory = "All";
 
@@ -316,6 +316,64 @@ function updateCart() {
     searchBox.addEventListener("input", () => {
 
         filterProducts();
+
+    });
+
+    checkoutBtn.addEventListener("click", () => {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty.");
+
+        return;
+    }
+
+    let message =
+        "Hello F&D Sweets!%0A%0AI'd like to order:%0A%0A";
+
+    const grouped = {};
+
+    cart.forEach(item => {
+
+        if (grouped[item.id]) {
+
+            grouped[item.id].quantity++;
+
+        } else {
+
+            grouped[item.id] = {
+
+                ...item,
+                quantity: 1
+
+            };
+
+        }
+
+    });
+
+    let total = 0;
+
+    Object.values(grouped).forEach(item => {
+
+        message +=
+            `• ${item.name} x${item.quantity}%0A`;
+
+        total +=
+            item.price * item.quantity;
+
+    });
+
+    message +=
+        `%0AOrder Total: R${total}`;
+
+    const phone =
+        "27721393364";
+
+    window.open(
+        `https://wa.me/${phone}?text=${message}`,
+        "_blank"
+    );
 
     });
 

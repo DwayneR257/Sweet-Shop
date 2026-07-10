@@ -645,6 +645,22 @@ nav a:hover{
     cursor:pointer;
 }
 
+#checkoutBtn{
+    width:100%;
+    padding:15px;
+    background:#25D366;
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+#checkoutBtn:hover{
+    opacity:0.9;
+}
         .hero img{
             width:80%;
             max-width:900px;
