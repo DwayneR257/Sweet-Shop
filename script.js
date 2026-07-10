@@ -407,6 +407,10 @@ clearCart.onclick=function(){
 
     cart=[];
 
+    document.getElementById("customerName").value = "";
+    document.getElementById("customerPhone").value = "";
+    document.getElementById("customerAddress").value = "";
+
     updateCart();
 
 };
