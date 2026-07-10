@@ -428,38 +428,62 @@ if(cart.length===0){
 
 
 
-let message =
-"Hello F&D Sweets, I would like to order:%0A%0A";
+let name =
+document.getElementById("customerName").value;
 
+
+let phone =
+document.getElementById("customerPhone").value;
+
+
+let address =
+document.getElementById("customerAddress").value;
+
+
+
+if(name === "" || phone === "" || address === ""){
+
+    alert("Please enter your name, phone number and address");
+
+    return;
+
+}
+
+let message =
+"Hello F&D Sweets!%0A%0A";
+
+message +=
+"Customer: " + name + "%0A";
+
+message +=
+"Phone: " + phone + "%0A";
+
+message +=
+"Address: " + address + "%0A%0A";
+
+message +=
+"Order:%0A";
 
 let total = 0;
-
-
 
 cart.forEach(item=>{
 
 message +=
-"- " + item.name + "%0A";
+"• " + item.name + "%0A";
 
 total += item.price;
 
 });
 
-
-
 message +=
 "%0ATotal: R" + total;
 
-
-
-let phone =
-"27721393364";
-
-
-
 window.open(
-"https://wa.me/"+phone+"?text="+message,
+
+"https://wa.me/27721393364?text=" + message,
+
 "_blank"
+
 );
 
 };

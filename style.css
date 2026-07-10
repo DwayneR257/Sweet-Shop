@@ -747,7 +747,32 @@ footer{
 
 }
 
+/* ================= CUSTOMER DETAILS ================= */
 
+
+.cart-panel input,
+.cart-panel select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+    border:2px solid #ff80aa;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+
+.cart-panel h3{
+
+    margin-top:20px;
+
+}
 
 /* MOBILE SIZE */
 

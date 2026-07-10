@@ -289,38 +289,46 @@
 
 <!-- ================= CART PANEL ================= -->
 
-<div class="cart-panel"
-     id="cartPanel">
+<div class="cart-panel" id="cartPanel">
 
-<h2>
-    Your Cart
-</h2>
+    <h2>Your Cart</h2>
 
-<div id="cartItems"></div>
+    <div id="cartItems"></div>
 
-<button id="checkoutBtn">
+    <h3 id="cartTotal">
+        Total: R0
+    </h3>
 
-    Checkout via WhatsApp
+    <hr>
 
-</button>
+    <h3>Customer Details</h3>
 
-<h3 id="cartTotal">
+    <input 
+    type="text"
+    id="customerName"
+    placeholder="Your Name">
 
-    Total: R0
+    <input 
+    type="tel"
+    id="customerPhone"
+    placeholder="Your Phone Number">
 
-</h3>
+    <input 
+        type="text"
+        id="customerAddress"
+        placeholder="Home Address">
 
-<button id="clearCart">
+    <button id="checkoutBtn">
+        Checkout via WhatsApp
+    </button>
 
-    Clear Cart
+    <button id="clearCart">
+        Clear Cart
+    </button>
 
-</button>
-
-<button id="closeCart">
-
-    Close
-
-</button>
+    <button id="closeCart">
+        Close
+    </button>
 
 </div>
 
