@@ -442,7 +442,7 @@ checkoutBtn.onclick = function(){
     }
 
 
-    let message = 
+    let message =
 `Hello F&D Sweets!
 
 Customer: ${name}
@@ -452,28 +452,53 @@ Address: ${address}
 Order:
 `;
 
+
+    let grouped = {};
     let total = 0;
 
 
     cart.forEach(item => {
 
-        message += `• ${item.name} - R${item.price}\n`;
+        if(grouped[item.id]){
 
-        total += item.price;
+            grouped[item.id].quantity++;
+
+        }else{
+
+            grouped[item.id] = {
+                ...item,
+                quantity:1
+            };
+
+        }
 
     });
 
 
-    message += `
 
+    Object.values(grouped).forEach(item=>{
+
+        message +=
+        `• ${item.name} x${item.quantity} - R${item.price * item.quantity}\n`;
+
+        total += item.price * item.quantity;
+
+    });
+
+
+
+    message +=
+`
 Total: R${total}`;
 
 
 
-    let encodedMessage = encodeURIComponent(message);
+    let encodedMessage =
+    encodeURIComponent(message);
 
 
-    let whatsappNumber = "27721393364";
+    let whatsappNumber =
+    "27711393364";
 
 
     window.open(
@@ -482,7 +507,6 @@ Total: R${total}`;
     );
 
 };
-
 // START WEBSITE
 
 displayProducts(products);
