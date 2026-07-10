@@ -415,76 +415,67 @@ clearCart.onclick=function(){
 
 // WHATSAPP CHECKOUT
 
-checkoutBtn.onclick=function(){
+checkoutBtn.onclick = function(){
+
+    if(cart.length === 0){
+
+        alert("Your cart is empty");
+        return;
+
+    }
 
 
-if(cart.length===0){
-
-    alert("Your cart is empty");
-
-    return;
-
-}
+    let name = document.getElementById("customerName").value;
+    let phone = document.getElementById("customerPhone").value;
+    let address = document.getElementById("customerAddress").value;
 
 
+    if(name === "" || phone === "" || address === ""){
 
-let name =
-document.getElementById("customerName").value;
+        alert("Please enter your name, phone number and address");
+        return;
 
-
-let phone =
-document.getElementById("customerPhone").value;
-
-
-let address =
-document.getElementById("customerAddress").value;
+    }
 
 
+    let message = 
+`Hello F&D Sweets!
 
-if(name === "" || phone === "" || address === ""){
+Customer: ${name}
+Phone: ${phone}
+Address: ${address}
 
-    alert("Please enter your name, phone number and address");
+Order:
+`;
 
-    return;
+    let total = 0;
 
-}
 
-let message =
-"Hello F&D Sweets!%0A%0A";
+    cart.forEach(item => {
 
-message +=
-"Customer: " + name + "%0A";
+        message += `• ${item.name} - R${item.price}\n`;
 
-message +=
-"Phone: " + phone + "%0A";
+        total += item.price;
 
-message +=
-"Address: " + address + "%0A%0A";
+    });
 
-message +=
-"Order:%0A";
 
-let total = 0;
+    message += `
 
-cart.forEach(item=>{
+Total: R${total}`;
 
-message +=
-"• " + item.name + "%0A";
 
-total += item.price;
 
-});
+    let encodedMessage = encodeURIComponent(message);
 
-message +=
-"%0ATotal: R" + total;
 
-window.open(
+    let whatsappNumber = "27721393364";
 
-"https://wa.me/27721393364?text=" + message,
 
-"_blank"
-
-);
+    window.open(
+        `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+        "_blank"
+    );
 
 };
 
