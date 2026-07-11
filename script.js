@@ -123,7 +123,16 @@ function updateCart(){
 
     });
 
+    if(cart.length === 0){
 
+    cartItems.innerHTML = `
+        <p class="empty-cart">
+            🍬 Your cart is empty.<br>
+            Start adding some delicious sweets!
+        </p>
+    `;
+
+    }
 
     Object.values(grouped).forEach(item=>{
 
@@ -498,7 +507,7 @@ Total: R${total}`;
 
 
     let whatsappNumber =
-    "27711393364";
+    "27721393364";
 
 
     window.open(
@@ -506,7 +515,30 @@ Total: R${total}`;
         "_blank"
     );
 
+    alert(
+    "Thank you for your order! 🎉\nYour order is ready to be sent on WhatsApp."
+    );
 };
+
+window.addEventListener("load", () => {
+
+    const loader =
+        document.getElementById("loader");
+
+    setTimeout(() => {
+
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+
+            loader.style.display = "none";
+
+        }, 500);
+
+    }, 1000);
+
+});
+
 // START WEBSITE
 
 displayProducts(products);
