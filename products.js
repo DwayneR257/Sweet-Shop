@@ -2,10 +2,10 @@ const products = [
 
 {
     id:1,
-    name:"Chocolate Cupcakes",
-    price:35,
-    image:"Images/IMG-20260602-WA0023.jpg",
-    description:"Soft chocolate cupcakes",
+    name:"Candy Nut",
+    price:80,
+    image:"Images/Candy Nut.jpg",
+    description:"Soft nut chocolate",
     category:"Chocolate"
 },
 
@@ -14,7 +14,7 @@ const products = [
     name:"Apricots",
     price:25,
     image:"Images/Apricots.png",
-    description:"Sweet dried apricots 200g",
+    description:"Sweet apricots 250g",
     category:"Apricots"
 },
 
@@ -52,6 +52,104 @@ const products = [
     image:"Images/IMG-20260602-WA0029.jpg",
     description:"A box filled with sweet treats",
     category:"Candy"
-}
+},
 
+{
+    id:7,
+    name:"Banana Sweets",
+    price:50,
+    image:"Images/Banana sweets.png",
+    description:"250g of sweet banana shaped sweets",
+    category:"Candy"
+},
+
+{
+    id:8,
+    name:"Cherry Sweets",
+    price:50,
+    image:"Images/Cherry Sweets.png",
+    description:"250g of sweet cherry shaped sweets",
+    category:"Candy"
+},
+
+{
+    id:9,
+    name:"Fruit Lollies",
+    price:50,
+    image:"Images/Fruit Lollies.png",
+    description:"250g of fruit lollie sweets",
+    category:"Candy"
+},
+
+{
+    id:10,
+    name:"Fruit Pastiles",
+    price:50,
+    image:"Images/Fruit Pastiles.jpg",
+    description:"250g of fruit pastiles sweets",
+    category:"Candy"
+},
+
+{
+    id:12,
+    name:"Jelly Sweets",
+    price:50,
+    image:"Images/Jelly Sweets.png",
+    description:"250g of Jelly sweets",
+    category:"Candy"
+},
+
+{
+    id:13,
+    name:"Liquorice",
+    price:50,
+    image:"Images/Liquorice.png",
+    description:"250g of Liquorice sweets",
+    category:"Candy"
+},
+
+{
+    id:14,
+    name:"Milk Bottles",
+    price:50,
+    image:"Images/Milk bottles.jpg",
+    description:"250g of Milk Bottle sweets",
+    category:"Candy"
+},
+
+{
+    id:15,
+    name:"Mix Sweets",
+    price:50,
+    image:"Images/Mix Sweets.png",
+    description:"250g of Mix sweets",
+    category:"Candy"
+},
+
+{
+    id:16,
+    name:"Pink Sweets",
+    price:50,
+    image:"Images/Pink Sweets.png",
+    description:"250g of Pink sweets",
+    category:"Candy"
+},
+
+{
+    id:17,
+    name:"Soft fruity sweets",
+    price:50,
+    image:"Images/Soft fruit gums.png",
+    description:"250g of soft fruit sweets",
+    category:"Candy"
+},
+
+{
+    id:18,
+    name:"Soft Teeth sweets",
+    price:50,
+    image:"Images/Teeth sweets.jpg",
+    description:"250g of soft teeth sweets",
+    category:"Candy"
+},
 ];
